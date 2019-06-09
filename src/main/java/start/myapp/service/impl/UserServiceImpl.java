@@ -1,4 +1,4 @@
-package start.myapp.service;
+package start.myapp.service.impl;
 
 import java.util.List;
 import java.util.UUID;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import start.myapp.dao.UserDao;
 import start.myapp.model.User;
+import start.myapp.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -57,6 +58,20 @@ public class UserServiceImpl implements UserService {
 		Criterion criterion = Restrictions.and(Restrictions.eq("username", user.getUsername()),
 				Restrictions.eq("password", user.getPassword()));
 		return userDao.findByCriterion(criterion);
+	}
+
+	@Override
+	public User changePassword(User user) {
+		// TODO Auto-generated method stub
+		return userDao.update(user);
+
+	}
+
+	@Override
+	public void delete(User user) {
+		// TODO Auto-generated method stub
+
+		userDao.delete(user);
 	}
 
 }

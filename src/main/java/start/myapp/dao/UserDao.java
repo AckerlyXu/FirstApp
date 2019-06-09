@@ -14,7 +14,11 @@ public interface UserDao {
 
 	User findOne(UUID uuid);
 
+	User findOneLazily(UUID uuid);
+
 	User findByCriterion(Criterion criterion);
 
 	List<User> findAll();
+
+	void delete(User user);
 }

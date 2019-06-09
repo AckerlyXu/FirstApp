@@ -76,4 +76,18 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
+	@Override
+	public User findOneLazily(UUID uuid) {
+		// TODO Auto-generated method stub
+		return (User) currentSession().load(User.class, uuid);
+	}
+
+	@Override
+	public void delete(User user) {
+		// TODO Auto-generated method stub
+
+		User dUser = findOneLazily(user.getId());
+		currentSession().delete(dUser);
+	}
+
 }

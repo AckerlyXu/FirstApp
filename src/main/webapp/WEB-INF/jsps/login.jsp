@@ -22,7 +22,7 @@
                  <c:if test="${passwordError!=null}" ><span  class="alert alert-danger">${passwordError} </span> </c:if>
           <br/>
     <c:if test="${userError!=null}" ><br/><div class="text-center"><span  class="alert alert-danger ">${userError} </span></div> <br/></c:if>
-         <a class="btn btn-primary" href="/user/register">注册</a>><input type="submit" class="btn btn-primary"> 
+         <a class="btn btn-primary" href="/user/register">注册</a><input type="submit" class="btn btn-primary" value="登陆"> 
     </form:form>
 </body>
 </html>

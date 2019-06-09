@@ -19,4 +19,6 @@ public interface UserService {
 	User findUserByUsernameAndPassword(User user);
 
 	User changePassword(User user);
+
+	void delete(User user);
 }

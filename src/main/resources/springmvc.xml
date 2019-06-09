@@ -26,11 +26,18 @@
     <mvc:annotation-driven>
  
     </mvc:annotation-driven> 
-    
-    
+   
+<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+</bean>
+
+    <mvc:resources location="/WEB-INF/images/" mapping="/images/**"></mvc:resources>
     <mvc:interceptors>
         <mvc:interceptor>
-             <mvc:mapping path="/"/>
+             <mvc:mapping path="/**"/>
+             <mvc:exclude-mapping path="/user/login"/>
+             <mvc:exclude-mapping path="/user/register"/>
+              <mvc:exclude-mapping path="/index"/>
+               <mvc:exclude-mapping path="/"/>
             <bean class="start.myapp.controller.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     

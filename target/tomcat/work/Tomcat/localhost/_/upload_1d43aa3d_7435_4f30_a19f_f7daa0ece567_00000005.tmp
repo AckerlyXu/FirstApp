@@ -1,0 +1,36 @@
+1.单个Route对象的工作主要是通过两个方法GetRouteData和GetVirtualPath完成的，返回的
+类型分别是RouteData类型和VirtualPathData类型  第三个方法和实际的物理文件有关
+2.RouteData对象具有一个Values的属性，是一个路由参数的字典，GetRequiredString方法
+规定了必要的路由参数，如果没有抛出异常，它还有一个返回Http上下文对象的方法GetHttpHandler
+3.Route对象的的url属性返回对应的url模板，它有两个RouteValueDictionary类型的对象constraints
+defaults分别用来设置路由参数的模式匹配和默认值 Route对象的DataTokens属性用来储存某些额外
+变量，RouteData对象和VirtualPathData对象的DataTokens都来自于此
+4，RouteTable含有Route的集合对所有的Route进行遍历以获得RouteData
+日志文件: C:\Program Files\Oracle\Inventory\logs\installActions2018-10-25_11-44-41PM.log
+Failed to set ACL's for specified User
+
+maven clean compile ->编译主文件
+
+maven clean test   -> 先编译主文件，再编译测试文件，最后测试
+
+maven clean package  ->先编译主文件，再编译测试文件，然后测试，测试成功后打成jar包
+
+maven clean install ->编译主文件，编译测试文件，测试，打包，安装到本地仓库
+
+mvn install -D maven.test.skip=true  ->跳过测试(并且跳过编译)   mvn package -D skipTests 仅跳过测试
+
+mvn help:describe -D plugin=org.apache.maven.plugins:maven-compiler-plugin:2.1 获取插件的帮助信息，可以去掉版本号,help是插件的目标前缀
+mvn help:describe -D plugin=compiler  [-D detail]  [-D goal=compiler] 也可以使用目标前缀
+
+mvn dependency:list tree analyze  描述项目的依赖
+
+mvn help:activate-profiles      mvn help:all-profiles    查看profiles
+
+
+maven { url ‘https://maven.aliyun.com/repository/google’ }
+maven{ url ‘https://maven.aliyun.com/repository/jcenter’}
+
+
+
+
+

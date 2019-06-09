@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import start.myapp.model.User;
+
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 
@@ -14,21 +16,29 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
-		if (request.getRequestURI().equals("/index") || request.getRequestURI().equals("/user/register")
-				|| request.getRequestURI().equals("/user/login")) {
+//		if (request.getRequestURI().equals("/index") || request.getRequestURI().equals("/user/register")
+//				|| request.getRequestURI().equals("/user/login")) {
+//
+//			return true;
+		// } else {
+		Object user = request.getSession().getAttribute("user");
+		if (user == null || !(user instanceof User)) {
 
-			return true;
+			response.sendRedirect("/user/login");
+			return false;
 		} else {
-			Object user = request.getSession().getAttribute("user");
-			if (user == null) {
-
-				response.sendRedirect("/user/login");
-				return false;
-			} else {
-				return true;
+			// 只有admin才能进入用户管理页面
+			if (request.getRequestURI().equals("/user/admin") || request.getRequestURI().startsWith("/user/delete")) {
+				User user2 = (User) user;
+				if (!user2.getUsername().equals("admin")) {
+					response.sendRedirect("/");
+					return false;
+				}
 			}
 
 		}
+		return true;
+		// }
 
 	}
 
